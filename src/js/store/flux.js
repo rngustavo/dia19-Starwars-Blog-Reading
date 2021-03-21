@@ -15,9 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			favorites: [],
 			characters: [
-				{ name: "Luke", data: "este es ...." },
-				{ name: "Anakyn", data: "este es ...." },
-				{ name: "Leia", data: "este es ...." }
+				{ name: "Luke", data: "este es Luke" },
+				{ name: "Anakyn", data: "este es Anakyn" },
+				{ name: "Leia", data: "este es Leia" }
 			],
 			planets: [{ name: "Death Star" }, { name: "The Republic" }]
 		},
@@ -33,11 +33,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let url = "https://www.swapi.tech/api/people";
 				let res = fetch(url)
 					.then(res => res.json())
-					.then(data => setStore({ characters: data }));
-				/* 
-                    .then(res => res.json())
-                    .then(data => console.log(data))
-                    .catch(err => console.error(err)) */
+					.then(data => setStore({ characters: data.results }));
+
+				url = "https://www.swapi.tech/api/planets";
+				res = fetch(url)
+					.then(res => res.json())
+					.then(data => setStore({ planets: data.results }));
 			},
 			changeColor: (index, color) => {
 				//get the store

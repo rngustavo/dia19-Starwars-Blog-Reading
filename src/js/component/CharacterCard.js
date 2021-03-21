@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
+import { Context } from "../store/appContext";
 import Image from "../../img/Star_Wars_Logo.svg.png";
 import "../../styles/index.scss";
 export const CharacterCard = props => {
-	//console.log(props);
+	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="card " style={{ width: "18rem" }}>
 			<img src={Image} className="card-img-top " alt="..." />

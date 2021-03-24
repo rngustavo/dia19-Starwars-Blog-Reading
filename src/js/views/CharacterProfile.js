@@ -13,7 +13,7 @@ export const CharacterProfile = () => {
 
 	return (
 		<div className="container">
-			<div> {JSON.stringify(caracter.result.properties, null, "\t")}</div>
+			<pre> {JSON.stringify(caracter.result.properties, undefined, 2)}</pre>
 			<h1>personaje jedi....</h1>
 
 			<br />

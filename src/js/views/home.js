@@ -31,23 +31,27 @@ export const Home = () => {
 		<div className="text-center mt-5">
 			<h1>Characters</h1>
 			<div className="row d-flex">
-				{characters.map((value, index) => {
-					return (
-						<div key={index}>
-							<CharacterCard key={index} name={value.name} data={value.url} />
-						</div>
-					);
-				})}
+				<div className="scrolling-wrapper">
+					{characters.map((value, index) => {
+						return (
+							<div className="card" key={index}>
+								<CharacterCard key={index} name={value.name} data={value.url} uid={value.uid} />
+							</div>
+						);
+					})}
+				</div>
 			</div>
 			<h1>Planets</h1>
 			<div className="row d-flex">
-				{planets.map((value, index) => {
-					return (
-						<div key={index}>
-							<PlanetsCard key={index} name={value.name} data={value.url} />
-						</div>
-					);
-				})}
+				<div className="scrolling-wrapper">
+					{planets.map((value, index) => {
+						return (
+							<div className="card" key={index}>
+								<PlanetsCard key={index} name={value.name} data={value.url} />
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

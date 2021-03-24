@@ -15,9 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			favorites: [],
 			characters: [
-				{ name: "Luke", data: "este es Luke" },
-				{ name: "Anakyn", data: "este es Anakyn" },
-				{ name: "Leia", data: "este es Leia" }
+				{ name: "Luke", data: "este es Luke", uid: 1 },
+				{ name: "Anakyn", data: "este es Anakyn", uid: 2 },
+				{ name: "Leia", data: "este es Leia", uid: 3 }
 			],
 			planets: [{ name: "Death Star" }, { name: "The Republic" }]
 		},

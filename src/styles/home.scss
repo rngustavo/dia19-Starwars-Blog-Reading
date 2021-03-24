@@ -2,3 +2,13 @@
     width: 70px;
     height: 50px;
 }
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}

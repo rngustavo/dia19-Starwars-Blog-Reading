@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
+//import { Context } from "../store/appContext";
 import Image from "../../img/Star_Wars_Logo.svg.png";
 import "../../styles/index.scss";
 export const PlanetsCard = props => {
+	//const { store, actions } = useContext(Context);
 	//console.log(props);
 	return (
 		<div className="card " style={{ width: "18rem" }}>

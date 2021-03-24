@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/Star_Wars_Logo.svg.png";
+import { Favorites } from "../component/Favorites.js";
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -17,19 +18,9 @@ export const Navbar = () => {
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					Dropdown button
+					Favorites
 				</button>
-				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a className="dropdown-item" href="#">
-						Action
-					</a>
-					<a className="dropdown-item" href="#">
-						Another action
-					</a>
-					<a className="dropdown-item" href="#">
-						Something else here
-					</a>
-				</div>
+				<Favorites />
 			</div>
 		</nav>
 	);

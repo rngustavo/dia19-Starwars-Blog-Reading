@@ -16,7 +16,7 @@ export function CharacterCard({ name, data, uid }) {
 				<h5 className="card-title">{name}</h5>
 				<p className="card-text">{data}</p>
 				<a href="#" className="btn btn-primary">
-					<Link to="/CharacterProfile">Learn more! {uid}</Link>
+					<Link to={"/CharacterProfile/" + uid}>Learn more! </Link>
 				</a>
 				<a href="#" className={on ? "btn btn-success" : "btn btn-primary"} onClick={Favorito}>
 					Favorito

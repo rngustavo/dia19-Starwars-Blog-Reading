@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			favorites: [],
+			info: [],
 			characters: [
 				{ name: "Luke", data: "este es Luke", uid: 1 },
 				{ name: "Anakyn", data: "este es Anakyn", uid: 2 },
@@ -30,16 +31,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
-				let url = "https://www.swapi.tech/api/people";
+				//let url = "https://www.swapi.tech/api/people";
+				let url = "https://swapi.dev/api/people";
+
 				let res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ characters: data.results }));
 
-				url = "https://www.swapi.tech/api/planets";
+				//url = "https://www.swapi.tech/api/planets";
+				url = "https://swapi.dev/api/planets";
+
 				res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ planets: data.results }));
 			},
+
+			loadSomeInfo: (id, ispleople) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+                */
+				if (ispleople) {
+					let url = "https://www.swapi.tech/api/people/" + id;
+					let res = fetch(url)
+						.then(res => res.json())
+						.then(data => setStore({ info: data.results.properties }));
+				} else {
+					let url = "https://www.swapi.tech/api/planets/" + id;
+					let res = fetch(url)
+						.then(res => res.json())
+						.then(data => setStore({ info: data.results.properties }));
+				}
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

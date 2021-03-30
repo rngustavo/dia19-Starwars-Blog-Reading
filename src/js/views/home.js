@@ -1,27 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-
-import "../../styles/home.scss";
 import { CharacterCard } from "../component/CharacterCard.js";
 import { PlanetsCard } from "../component/PlanetsCard.js";
+import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const { characters } = store;
 	const { planets } = store;
-	/* const [characters, setCharacters] = useState([
-		{ name: "Luke", data: "este es ...." },
-		{ name: "Anakyn", data: "este es ...." },
-		{ name: "Leia", data: "este es ...." }
-	]);
- */
-	/* useEffect(() => {
-		//  actions.loadSomeData();
-		let url = "https://www.swapi.tech/api/people/";
-		fetch(url)
-			.then(res => res.json())
-			.then(data => setCharacters(data.results));
-    }, []); */
 
 	useEffect(() => {
 		actions.loadSomeData();
@@ -47,7 +33,7 @@ export const Home = () => {
 					{planets.map((value, index) => {
 						return (
 							<div className="card" key={index}>
-								<PlanetsCard key={index} name={value.name} data={value.url} />
+								<PlanetsCard key={index} name={value.name} data={value.url} uid={index + 1} />
 							</div>
 						);
 					})}

@@ -3,25 +3,23 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/characterprofile.scss";
 import Image from "../../img/Star_Wars_Logo.svg.png";
-//import caracter from "../store/character.json";
 
-export const CharacterProfile = () => {
+export const PlanetProfile = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 	const { info } = store;
-	const { loadSomeInfoCharacter } = actions;
+	const { loadSomeInfoPlanet } = actions;
 
-	//console.log("id", params.theid);
 	useEffect(() => {
-		loadSomeInfoCharacter(params.theid);
+		loadSomeInfoPlanet(params.ptheid);
 	}, []);
 
-	const { name, birth_year, gender, height, skin_color, eye_color } = info;
-	//console.log(info);
+	const { name, rotation_period, orbital_period, diameter, climate, gravity } = info;
+
 	return (
 		<div className="container">
 			<h1>
-				Character {name}
+				Planet {name}
 				....
 			</h1>
 			<div className="card mb-3" style={{ maxWidth: "1500px" }}>
@@ -44,21 +42,21 @@ export const CharacterProfile = () => {
 				<thead>
 					<tr>
 						<th scope="col">Name</th>
-						<th scope="col">Birth Year</th>
-						<th scope="col">Gender</th>
-						<th scope="col">Height</th>
-						<th scope="col">Skin Color</th>
-						<th scope="col">Eye Color</th>
+						<th scope="col">Rotation period</th>
+						<th scope="col">Orbital period</th>
+						<th scope="col">Diameter</th>
+						<th scope="col">Climate </th>
+						<th scope="col">Gravity</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>{name}</td>
-						<td>{birth_year}</td>
-						<td>{gender}</td>
-						<td>{height}</td>
-						<td>{skin_color}</td>
-						<td>{eye_color}</td>
+						<td>{rotation_period}</td>
+						<td>{orbital_period}</td>
+						<td>{diameter}</td>
+						<td>{climate}</td>
+						<td>{gravity}</td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,18 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			favorites: [],
 			info: [],
 			characters: [
@@ -23,14 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [{ name: "Death Star" }, { name: "The Republic" }]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
 				//let url = "https://www.swapi.tech/api/people";
 				let url = "https://swapi.dev/api/people/";
 
@@ -48,17 +29,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loadSomeInfoCharacter: id => {
 				let url = `https://swapi.dev/api/people/${id}/`;
-				//let url = "https://swapi.dev/api/people/";
+
 				let res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ info: data }));
-				/* else {
-					let url = "https://swapi.dev/api/planets/" + id;
-					let res = fetch(url)
-						.then(res => res.json())
-						.then(data => setStore({ info: data.results.properties }));
-				} */
 			},
+
+			loadSomeInfoPlanet: id => {
+				let url = `https://swapi.dev/api/planets/${id}/`;
+
+				let res = fetch(url)
+					.then(res => res.json())
+					.then(data => setStore({ info: data }));
+			},
+
 			setFavorites: name => {
 				const store = getStore();
 				setStore({ favorites: [...store.favorites, name] });

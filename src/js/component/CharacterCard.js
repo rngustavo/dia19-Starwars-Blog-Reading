@@ -4,19 +4,18 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import Image from "../../img/Star_Wars_Logo.svg.png";
 import "../../styles/index.scss";
-//export const CharacterCard = props =>
+
 export function CharacterCard({ name, data, uid }) {
 	const { store, actions } = useContext(Context);
 	const [on, setOn] = useState(false);
 	// const Favorito = () => setOn(o => !o);
 
 	const Favorito = () => {
-		//console.log(!on);
 		setOn(o => !o);
-		//console.log(!on);
+
 		!on ? actions.setFavorites(name) : actions.deleteFavorites(name);
 	};
-	//console.log("id es ", uid, name);
+
 	return (
 		<div className="card " style={{ width: "18rem" }}>
 			<img src={Image} className="card-img-top " alt="..." />
@@ -31,11 +30,6 @@ export function CharacterCard({ name, data, uid }) {
 				<a href="#" className={on ? "btn btn-danger" : "btn btn-outline-primary"} onClick={Favorito}>
 					<i className="far fa-heart" />
 				</a>
-				{/* {store.favorites.includes(name) ? null : (
-					<a href="#" className={on ? "btn btn-danger" : "btn btn-outline-primary"} onClick={Favorito}>
-						<i className="far fa-heart" />
-					</a>
-				)} */}
 			</div>
 		</div>
 	);

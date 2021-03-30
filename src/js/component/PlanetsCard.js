@@ -1,28 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 //import { Context } from "../store/appContext";
 import Image from "../../img/Star_Wars_Logo.svg.png";
 import "../../styles/index.scss";
-export const PlanetsCard = props => {
-	//const { store, actions } = useContext(Context);
-	//console.log(props);
+
+export function PlanetsCard({ name, data, uid }) {
+	const { store, actions } = useContext(Context);
+	const [on, setOn] = useState(false);
+
+	const Favorito = () => {
+		setOn(o => !o);
+
+		!on ? actions.setFavorites(name) : actions.deleteFavorites(name);
+	};
+
 	return (
 		<div className="card " style={{ width: "18rem" }}>
 			<img src={Image} className="card-img-top " alt="..." />
 			<div className="card-body">
-				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">{props.data}</p>
-				<a href="#" className="btn btn-primary">
-					Learn more!
+				<h5 className="card-title">{name}</h5>
+				<p className="card-text">{data}</p>
+				<a href="#">
+					<Link className="btn btn-primary" to={"/PlanetProfile/" + uid}>
+						Learn more!
+					</Link>
 				</a>
-				<a href="#" className="btn btn-warning">
-					favorite
+				<a href="#" className={on ? "btn btn-danger" : "btn btn-outline-primary"} onClick={Favorito}>
+					<i className="far fa-heart" />
 				</a>
 			</div>
 		</div>
 	);
-};
+}
+
 PlanetsCard.propTypes = {
 	name: PropTypes.string,
-	data: PropTypes.string
+	data: PropTypes.string,
+	uid: PropTypes.number
 };

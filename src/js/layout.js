@@ -7,6 +7,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 //import { CharacterCard } from "./component/CharacterCard";
 import { CharacterProfile } from "./views/CharacterProfile";
+import { PlanetProfile } from "./views/PlanetProfile";
 
 //create your first component
 const Layout = () => {
@@ -25,6 +26,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/CharacterProfile/:theid">
 							<CharacterProfile />
+						</Route>
+						<Route exact path="/PlanetProfile/:ptheid">
+							<PlanetProfile />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

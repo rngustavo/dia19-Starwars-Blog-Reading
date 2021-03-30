@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import logo from "../../img/Star_Wars_Logo.svg.png";
 import { Favorites } from "../component/Favorites.js";
 export const Navbar = () => {
+	const { store } = useContext(Context);
+	const { favorites } = store;
+
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -18,7 +22,7 @@ export const Navbar = () => {
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					Favorites
+					Favorites <span>{favorites.length}</span>
 				</button>
 				<Favorites />
 			</div>

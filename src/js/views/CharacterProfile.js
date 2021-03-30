@@ -9,18 +9,15 @@ export const CharacterProfile = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 	const { info } = store;
-	const { loadSomeInfo } = actions;
-	const ispleople = true;
+	const { loadSomeInfoCharacter } = actions;
+
 	//console.log("id", params.theid);
 	useEffect(() => {
-		loadSomeInfo(params.theid, ispleople);
+		loadSomeInfoCharacter(params.theid);
 	}, []);
 
-	//console.log(caracter.result.properties);
-	// const { name, birth_year, gender, height, skin_color, eye_color } = caracter.result.properties;
-
 	const { name, birth_year, gender, height, skin_color, eye_color } = info;
-
+	//console.log(info);
 	return (
 		<div className="container">
 			{/* <pre> {JSON.stringify(caracter.result.properties, undefined, 2)}</pre> */}
@@ -32,10 +29,11 @@ export const CharacterProfile = () => {
 					</div>
 					<div className="col-md-6">
 						<div className="card-body">
-							<h5 className="card-title">{name}</h5>
+							<h5 className="card-title"> {name} </h5>
 							<p className="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional
 								content. This content is a little bit longer.
+								{height}
 								{/* <pre> {JSON.stringify(caracter.result.properties, undefined, 2)}</pre> */}
 							</p>
 						</div>

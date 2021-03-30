@@ -35,7 +35,7 @@ export const Home = () => {
 					{characters.map((value, index) => {
 						return (
 							<div className="card" key={index}>
-								<CharacterCard key={index} name={value.name} data={value.url} uid={value.uid} />
+								<CharacterCard key={index} name={value.name} data={value.url} uid={index + 1} />
 							</div>
 						);
 					})}

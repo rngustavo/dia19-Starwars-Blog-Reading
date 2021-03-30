@@ -32,50 +32,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 				//let url = "https://www.swapi.tech/api/people";
-				let url = "https://swapi.dev/api/people";
+				let url = "https://swapi.dev/api/people/";
 
 				let res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ characters: data.results }));
 
 				//url = "https://www.swapi.tech/api/planets";
-				url = "https://swapi.dev/api/planets";
+				url = "https://swapi.dev/api/planets/";
 
 				res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ planets: data.results }));
 			},
 
-			loadSomeInfo: (id, ispleople) => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
-				if (ispleople) {
-					let url = "https://www.swapi.tech/api/people/" + id;
+			loadSomeInfoCharacter: id => {
+				let url = `https://swapi.dev/api/people/${id}/`;
+				//let url = "https://swapi.dev/api/people/";
+				let res = fetch(url)
+					.then(res => res.json())
+					.then(data => setStore({ info: data }));
+				/* else {
+					let url = "https://swapi.dev/api/planets/" + id;
 					let res = fetch(url)
 						.then(res => res.json())
 						.then(data => setStore({ info: data.results.properties }));
-				} else {
-					let url = "https://www.swapi.tech/api/planets/" + id;
-					let res = fetch(url)
-						.then(res => res.json())
-						.then(data => setStore({ info: data.results.properties }));
-				}
+				} */
 			},
-
-			changeColor: (index, color) => {
-				//get the store
+			setFavorites: name => {
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				setStore({ favorites: [...store.favorites, name] });
+			},
+			deleteFavorites: name => {
+				const store = getStore();
+				const newFavorites = [...store.favorites];
+				const indice = newFavorites.indexOf(name);
+				newFavorites.splice(indice, 1);
+				setStore({ favorites: newFavorites });
 			}
 		}
 	};

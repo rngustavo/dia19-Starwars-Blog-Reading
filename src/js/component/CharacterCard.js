@@ -8,19 +8,34 @@ import "../../styles/index.scss";
 export function CharacterCard({ name, data, uid }) {
 	const { store, actions } = useContext(Context);
 	const [on, setOn] = useState(false);
-	const Favorito = () => setOn(o => !o);
+	// const Favorito = () => setOn(o => !o);
+
+	const Favorito = () => {
+		//console.log(!on);
+		setOn(o => !o);
+		//console.log(!on);
+		!on ? actions.setFavorites(name) : actions.deleteFavorites(name);
+	};
+	//console.log("id es ", uid, name);
 	return (
 		<div className="card " style={{ width: "18rem" }}>
 			<img src={Image} className="card-img-top " alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{name}</h5>
 				<p className="card-text">{data}</p>
-				<a href="#" className="btn btn-primary">
-					<Link to={"/CharacterProfile/" + uid}>Learn more! </Link>
+				<a href="#">
+					<Link className="btn btn-primary" to={"/CharacterProfile/" + uid}>
+						Learn more!
+					</Link>
 				</a>
-				<a href="#" className={on ? "btn btn-success" : "btn btn-primary"} onClick={Favorito}>
-					Favorito
+				<a href="#" className={on ? "btn btn-danger" : "btn btn-outline-primary"} onClick={Favorito}>
+					<i className="far fa-heart" />
 				</a>
+				{/* {store.favorites.includes(name) ? null : (
+					<a href="#" className={on ? "btn btn-danger" : "btn btn-outline-primary"} onClick={Favorito}>
+						<i className="far fa-heart" />
+					</a>
+				)} */}
 			</div>
 		</div>
 	);

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 
 import "../../styles/index.scss";
 
 export function Favorites() {
-	const [favorites, setFavorites] = useState([
-		{ name: "Luke", data: "este es ...." },
-		{ name: "Anakyn", data: "este es ...." },
-		{ name: "Leia", data: "este es ...." }
-	]);
+	const { store, actions } = useContext(Context);
+	const { favorites, setFavorites } = store;
 
 	return (
 		<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -15,24 +13,11 @@ export function Favorites() {
 				return (
 					<div key={index}>
 						<a key={index} className="dropdown-item" href="#">
-							{value.name}
+							{value}
 						</a>
 					</div>
 				);
 			})}
 		</div>
 	);
-	/* return (
-		<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a className="dropdown-item" href="#">
-				Action
-			</a>
-			<a className="dropdown-item" href="#">
-				Another action
-			</a>
-			<a className="dropdown-item" href="#">
-				Something else here
-			</a>
-		</div>
-    ); */
 }

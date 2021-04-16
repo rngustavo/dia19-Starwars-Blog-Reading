@@ -1,3 +1,4 @@
+const urlApi = "https://3000-fuchsia-vole-6xnvm7ph.ws-us03.gitpod.io";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -12,15 +13,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			loadSomeData: () => {
-				//let url = "https://www.swapi.tech/api/people";
-				let url = "https://swapi.dev/api/people/";
+				//let url = "https://swapi.dev/api/people/";
+				let url = urlApi + "/people/";
 
 				let res = fetch(url)
 					.then(res => res.json())
 					.then(data => setStore({ characters: data.results }));
 
-				//url = "https://www.swapi.tech/api/planets";
-				url = "https://swapi.dev/api/planets/";
+				//url = "https://swapi.dev/api/planets/";
+				url = urlApi + "/planets/";
 
 				res = fetch(url)
 					.then(res => res.json())
@@ -28,7 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadSomeInfoCharacter: id => {
-				let url = `https://swapi.dev/api/people/${id}/`;
+				//let url = `https://swapi.dev/api/people/${id}/`;
+				let url = `${urlApi}/people/${id}/`;
 
 				let res = fetch(url)
 					.then(res => res.json())
@@ -36,7 +38,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadSomeInfoPlanet: id => {
-				let url = `https://swapi.dev/api/planets/${id}/`;
+				//let url = `https://swapi.dev/api/planets/${id}/`;
+				let url = `${urlApi}/planets/${id}/`;
 
 				let res = fetch(url)
 					.then(res => res.json())

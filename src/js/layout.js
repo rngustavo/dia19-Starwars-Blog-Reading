@@ -9,6 +9,9 @@ import { Footer } from "./component/footer";
 import { CharacterProfile } from "./views/CharacterProfile";
 import { PlanetProfile } from "./views/PlanetProfile";
 
+import { Register } from "./views/register";
+import { Login } from "./views/login";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -29,6 +32,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/PlanetProfile/:ptheid">
 							<PlanetProfile />
+						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/login">
+							<Login />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

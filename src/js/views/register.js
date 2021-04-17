@@ -25,6 +25,8 @@ export const Register = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
+				//tavo validar esta linea
+				sessionStorage.setItem("my_token", data.token);
 				// setAuth(true);
 			})
 			.catch(err => console.log(err));

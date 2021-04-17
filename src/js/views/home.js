@@ -2,18 +2,20 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { CharacterCard } from "../component/CharacterCard.js";
 import { PlanetsCard } from "../component/PlanetsCard.js";
+import { Login } from "./login";
 import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const { characters } = store;
 	const { planets } = store;
-
+	let token = sessionStorage.getItem("my_token");
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
 
-	return (
+	console.log(token);
+	return token === null ? (
 		<div className="text-center mt-5">
 			<h1>Characters</h1>
 			<div className="row d-flex">
@@ -40,5 +42,7 @@ export const Home = () => {
 				</div>
 			</div>
 		</div>
+	) : (
+		<Login />
 	);
 };

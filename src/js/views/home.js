@@ -9,13 +9,14 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const { characters } = store;
 	const { planets } = store;
+	const { islogin } = store;
 	let token = sessionStorage.getItem("my_token");
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
 
-	console.log(token);
-	return token === null ? (
+	console.log(islogin);
+	return islogin ? (
 		<div className="text-center mt-5">
 			<h1>Characters</h1>
 			<div className="row d-flex">

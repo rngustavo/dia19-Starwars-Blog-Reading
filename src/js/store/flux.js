@@ -1,9 +1,10 @@
-const urlApi = "https://3000-fuchsia-vole-6xnvm7ph.ws-us03.gitpod.io";
+const urlApi = "https://3000-black-koala-jisgb2cv.ws-us03.gitpod.io";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			favorites: [],
 			info: [],
+			islogin: false,
 			characters: [
 				{ name: "Luke", data: "este es Luke", uid: 1 },
 				{ name: "Anakyn", data: "este es Anakyn", uid: 2 },
@@ -50,12 +51,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({ favorites: [...store.favorites, name] });
 			},
+
 			deleteFavorites: name => {
 				const store = getStore();
 				const newFavorites = [...store.favorites];
 				const indice = newFavorites.indexOf(name);
 				newFavorites.splice(indice, 1);
 				setStore({ favorites: newFavorites });
+			},
+			setLogin: loggin => {
+				const store = getStore();
+				setStore({ islogin: [loggin] });
 			}
 		}
 	};

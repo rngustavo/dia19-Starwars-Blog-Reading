@@ -15,7 +15,7 @@ export const Register = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3000-violet-angelfish-t7qwaecr.ws-us03.gitpod.io/register", {
+		fetch("https://3000-black-koala-jisgb2cv.ws-us03.gitpod.io/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

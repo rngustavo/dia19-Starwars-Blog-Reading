@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { Redirect } from "react-router-dom";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { store, actions } = useContext(Context);
+	const { islogin } = store;
+	const { setLogin } = actions;
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -11,9 +16,9 @@ export const Login = () => {
 			email: email,
 			password: password
 		};
-
+		//setLogin(true);
 		// fetch de LOGIN
-		fetch("https://3000-violet-angelfish-t7qwaecr.ws-us03.gitpod.io/login", {
+		fetch("https://3000-black-koala-jisgb2cv.ws-us03.gitpod.io/login", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -22,9 +27,18 @@ export const Login = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				//console.log(data);
+
 				// añadir token a session
-				sessionStorage.setItem("my_token", data.token);
+				//usuario valido
+				let token = data.token;
+				console.log(token);
+				if (token) {
+					sessionStorage.setItem("my_token", data.token);
+					setLogin(true);
+					console.log(islogin);
+				}
+
 				// let token = sessionStorage.getItem("my_token")
 			})
 			.catch(err => console.log(err));
@@ -64,6 +78,7 @@ export const Login = () => {
 					Submit
 				</button>
 			</form>
+			{islogin ? <Redirect to="/" /> : null}
 		</div>
 	);
 };

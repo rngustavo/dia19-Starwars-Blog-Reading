@@ -27,7 +27,7 @@ export const Login = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				//console.log(data);
+				console.log(data);
 
 				// añadir token a session
 				//usuario valido

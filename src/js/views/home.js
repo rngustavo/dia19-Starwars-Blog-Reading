@@ -15,7 +15,6 @@ export const Home = () => {
 		actions.loadSomeData();
 	}, []);
 
-	console.log(islogin);
 	return islogin ? (
 		<div className="text-center mt-5">
 			<h1>Characters</h1>

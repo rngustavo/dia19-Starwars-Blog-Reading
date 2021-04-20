@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [mensaje, setmensaje] = useState("");
 	const { store, actions } = useContext(Context);
 	const { islogin } = store;
 	const { setLogin } = actions;
@@ -37,7 +38,8 @@ export const Login = () => {
 					sessionStorage.setItem("my_token", data.token);
 					setLogin(true);
 					console.log(islogin);
-				}
+					setmensaje("");
+				} else setmensaje(data.msg);
 
 				// let token = sessionStorage.getItem("my_token")
 			})
@@ -53,7 +55,10 @@ export const Login = () => {
 						Email address
 					</label>
 					<input
-						onChange={e => setEmail(e.target.value)}
+						onChange={e => {
+							setEmail(e.target.value);
+							setmensaje("");
+						}}
 						type="email"
 						className="form-control"
 						id="exampleInputEmail1"
@@ -77,6 +82,9 @@ export const Login = () => {
 				<button type="submit" className="btn btn-primary">
 					Submit
 				</button>
+				<div>
+					<h2>{mensaje}</h2>
+				</div>
 			</form>
 			{islogin ? <Redirect to="/" /> : null}
 		</div>
